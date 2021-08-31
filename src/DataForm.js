@@ -1,33 +1,38 @@
-// import axios from "axios";
+import axios from "axios";
 import React from "react";
 import { Col, Row, Form, Container, Button } from "react-bootstrap";
 
-const dataFromLocalStorage = JSON.parse(localStorage.getItem("list"));
-
-const DataForm = () => {
-  const [FormData, setFormData] = React.useState({
+const DataForm = (props) => {
+  const initialData = {
     title: "",
     name: "",
     Category: "",
     price: "",
     detail: "",
-  });
-  const [, setTest] = React.useState(dataFromLocalStorage);
+    id: "",
+  };
+  const { setMenudata } = props;
+  const [FormData, setFormData] = React.useState(initialData);
 
   const submitting = (e) => {
     e.preventDefault();
-    const previousData = FormData;
-    const updateList = previousData;
-    setTest(updateList);
-    console.log("upadateList:", updateList);
-    localStorage.setItem("list", JSON.stringify(FormData));
-    // setFormData("");
+    if (
+      !FormData.title ||
+      !FormData.name ||
+      !FormData.Category ||
+      !FormData.detail ||
+      !FormData.price
+    ) {
+    } else {
+      axios.post("http://localhost:8000/menu", FormData).then((res) => {
+        axios.get("http://localhost:8000/menu").then((res) => {
+          setMenudata(res.data);
+        });
+      });
+      setFormData(initialData);
+    }
 
-    // axios.post("http://localhost:8000/menu", FormData).then((res) => {
-    //   axios.get("http://localhost:8000/menu").then((res) => {
-    //     setFormData(res.data);
-    //   });
-    // });
+    console.log(FormData);
   };
 
   const handle = (e) => {
@@ -52,6 +57,19 @@ const DataForm = () => {
                     autoComplete="off"
                     onChange={handle}
                     value={FormData.title}
+                  />
+                </Form.Group>
+              </Col>
+              <Col xs={12}>
+                <Form.Group className="mb-3" controlId="formName">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter name"
+                    name="name"
+                    autoComplete="off"
+                    onChange={handle}
+                    value={FormData.name}
                   />
                 </Form.Group>
               </Col>
@@ -82,10 +100,10 @@ const DataForm = () => {
                     value={FormData.Category}
                   >
                     <option selected></option>
-                    <option value="trasportation">Transportation</option>
+                    <option value="fastfood">Fastfood</option>
                     <option value="food">Food</option>
-                    <option value="chothes">Clothes</option>
-                    <option value="share">Share</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="drink">Drink</option>
                   </select>
                 </Form.Group>
               </Col>

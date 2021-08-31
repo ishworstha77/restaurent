@@ -8,7 +8,7 @@ const Cards = (props) => {
   return (
     <div>
       <Row xs={3}>
-        {menudata.map((curr, index) => {
+        {menudata?.map((curr, index) => {
           // console.log("curr", curr);
           const { id, title, name, price, Category, detail } = curr;
 

@@ -6,7 +6,8 @@ import DataForm from "./DataForm";
 import { Row, Col } from "react-bootstrap";
 
 const Restaurant = () => {
-  const [menudata, setMenudata] = React.useState([]);
+  const [menudata, setMenudata] = React.useState();
+  console.log("menudata", menudata);
 
   React.useEffect(() => {
     axios.get("http://localhost:8000/menu").then((res) => {
@@ -14,19 +15,10 @@ const Restaurant = () => {
     });
   }, []);
 
-  React.useEffect(() => {
-    const data = {
-      title: "aa",
-      id: "8",
-      name: "xdvsd",
-      price: "dfs",
-      detail: "dd",
-      category: "dfs",
-    };
-    axios
-      .post("http://localhost:8000/menu", data)
-      .then((response) => setMenudata(response.data));
-  }, []);
+  // put
+  // post
+  // get
+  // delete
 
   console.log("menudata", menudata);
 
@@ -38,16 +30,21 @@ const Restaurant = () => {
       console.log(res.data);
     });
   };
-  // setMenudata(updatedList);
-  // console.log("update", updatedList);
-  // localStorage.setItem("list", JSON.stringify(menudata));
-  // };
 
-  const filterData = (fastfood) => {
-    const updatedData = menudata.filter((cur) => {
-      return cur.Category === fastfood;
-    });
-    setMenudata(updatedData);
+  const filterData = (Category) => {
+    axios
+      .get("http://localhost:8000/menu/", {
+        params: {
+          Category: "fastfood",
+        },
+      })
+      .then((res) => {
+        setMenudata(res.data);
+      });
+    // const updatedData = menudata.filter((cur) => {
+    //   return cur.Category === fastfood;
+    // });
+    // setMenudata(updatedData);
   };
   return (
     <>
@@ -55,7 +52,7 @@ const Restaurant = () => {
 
       <Row>
         <Col>
-          <DataForm />
+          <DataForm setMenudata={setMenudata} />
         </Col>
         <Col>
           <Cards menudata={menudata} deleteCards={deleteCards} />

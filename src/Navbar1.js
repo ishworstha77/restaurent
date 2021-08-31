@@ -19,12 +19,18 @@ const Navbar1 = (props) => {
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               <NavDropdown title="Category" id="basic-nav-dropdown">
-                <NavDropdown.Item onClick={() => filterData("Fastfood")}>
+                <NavDropdown.Item onClick={() => filterData("fastfood")}>
                   fastfood
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Food</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">drinks</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">lunch</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => filterData("food")}>
+                  Food
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => filterData("drink")}>
+                  drinks
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={() => filterData("lunch")}>
+                  lunch
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
