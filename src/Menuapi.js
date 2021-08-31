@@ -1,0 +1,77 @@
+const Menu = [
+  {
+    id: 1,
+    title: "Restaurant",
+    name: "Momo",
+    Category: "Fastfood",
+    price: 120,
+    detail: "very healthy",
+  },
+  {
+    id: 2,
+    title: "Restaurant",
+    name: "noodles",
+    Category: "Fastfood",
+    price: 70,
+    detail: "very testy",
+  },
+  {
+    id: 3,
+    title: "Restaurant",
+    name: "coke",
+    Category: "drink",
+    price: 50,
+    detail: "very cold",
+  },
+  {
+    id: 4,
+    title: "Restaurant",
+    name: "Roti tarkari",
+    Category: "lunch",
+    price: 120,
+    detail: "very healthy",
+  },
+  {
+    id: 5,
+    title: "Restaurant",
+    name: "rice",
+    Category: "lunch",
+    price: 20,
+    detail: " good for health",
+  },
+
+  {
+    id: 6,
+    title: "Restaurant",
+    name: "meat",
+    Category: "food",
+    price: 500,
+    detail: "very good",
+  },
+
+  {
+    id: 7,
+    title: "Restaurant",
+    name: "meat",
+    Category: "food",
+    price: 500,
+    detail: "very good",
+  },
+  {
+    id: 8,
+    title: "Restaurant",
+    name: "meat",
+    Category: "food",
+    price: 500,
+    detail: "very good",
+  },
+  {
+    id: 9,
+    title: "Restaurant",
+    name: "meat",
+    Category: "food",
+    price: 500,
+    detail: "very good",
+  },
+];
+export default Menu;
